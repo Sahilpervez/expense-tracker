@@ -109,6 +109,8 @@ class _MyHomepageState extends State<MyHomepage> {
     );
   }
 
+  bool _showchart = true;
+
   void _deleteTranx(String id) {
     setState(() {
       _userTransaction.removeWhere((element) {
@@ -119,6 +121,7 @@ class _MyHomepageState extends State<MyHomepage> {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
     return Scaffold(
       // appBar: AppBar(
       //   backgroundColor: Colors.purple,
@@ -203,7 +206,18 @@ class _MyHomepageState extends State<MyHomepage> {
             ),
             Column(
               children: [
-                Chart(_recentTransactions),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Show Chart"),
+                    Switch(value: _showchart, onChanged: (_){
+                      setState(() {
+                        _showchart = ! _showchart;
+                      });
+                    })
+                  ],
+                ),
+                if(_showchart == true) Chart(_recentTransactions) ,
                 TransactionList(_userTransaction, _deleteTranx),
               ],
             ),

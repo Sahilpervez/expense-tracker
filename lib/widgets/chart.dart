@@ -48,7 +48,7 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 12,
       shadowColor: Colors.grey,
-      margin: EdgeInsets.only(top: 20,left: 20,right: 20,bottom: 17),
+      margin: EdgeInsets.only(left: 20,right: 20,bottom: 17),
       child: Column(
         children: [
           Container(margin: EdgeInsets.only(top: 15),child: Text("Total spent in past 7 days \$ ${totalSpending.toStringAsFixed(2)}"),),
