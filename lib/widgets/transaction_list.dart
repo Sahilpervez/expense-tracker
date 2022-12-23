@@ -5,36 +5,11 @@ import 'package:gap/gap.dart';
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
-  const TransactionList(this.userTranx,this.deletetransaction, {super.key});
+  TransactionList(this.userTranx,this.deletetransaction, this._islandscape, {super.key} );
   final List<Transaction> userTranx;
   final Function deletetransaction;
-  // final List<Transaction> _userTransaction = [
-  //   Transaction(
-  //     id: "t1",
-  //     title: "New Shoes",
-  //     amount: 69.99,
-  //     date: DateTime.now(),
-  //   ),
-  //   Transaction(
-  //     id: "t2",
-  //     title: "Weekly Grocery",
-  //     amount: 29.58,
-  //     date: DateTime.now(),
-  //   ),
-  // ];
-  //
-  // void _addUserTransaction(String txTitle, num txAmount) {
-  //   final NewTx = Transaction(
-  //     id: DateTime.now().toString(),
-  //     title: txTitle,
-  //     amount: txAmount,
-  //     date: DateTime.now(),
-  //   );
-  //   setState(() {
-  //     _userTransaction.add(NewTx);
-  //   });
-  // }
 
+  final bool _islandscape ;
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +38,10 @@ class TransactionList extends StatelessWidget {
                         fontFamily: 'Quicksand',
                       ),
                 ),
-                Gap(50),
+                Gap(10),
                 Image.asset(
                   "assets/Images/purple_wallet_small.png",
-                  scale: 1.4,
+                  scale: (_islandscape) ? 3 : 1.4,
                   fit: BoxFit.contain,
                 )
               ],

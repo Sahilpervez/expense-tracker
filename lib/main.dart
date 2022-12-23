@@ -218,7 +218,7 @@ class _MyHomepageState extends State<MyHomepage> {
                   ],
                 ),
                 if(_showchart == true) Chart(_recentTransactions) ,
-                TransactionList(_userTransaction, _deleteTranx),
+                TransactionList(_userTransaction, _deleteTranx, isLandscape),
               ],
             ),
           ],

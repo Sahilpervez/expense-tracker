@@ -24,9 +24,9 @@ class _NewTransactionState extends State<NewTransaction> {
       if (kDebugMode) {
         print("No new transactions added");
       }
-      return ;
+      return;
     }
-    widget.addTranx(enteredTitle, enteredAmount,_selectedDate);
+    widget.addTranx(enteredTitle, enteredAmount, _selectedDate);
     Navigator.of(context).pop();
   }
 
@@ -66,7 +66,7 @@ class _NewTransactionState extends State<NewTransaction> {
       t2.hour,
       t2.minute,
     );
-    setState((){
+    setState(() {
       _selectedDate = datetime;
     });
   }
@@ -92,89 +92,96 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Color(0xFFEFD6F3),
-      elevation: 5,
-      child: Container(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            TextField(
-              controller: _titleController,
-              onEditingComplete: () {
-                _submitData();
-              },
-              decoration: InputDecoration(
-                labelText: "Title",
-                labelStyle: TextStyle(color: Colors.purple, fontSize: 16),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.purple,
-                    width: 1.3,
-                  ),
-                ),
-              ),
-            ),
-            TextField(
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              onEditingComplete: () {
-                _submitData();
-              },
-              decoration: InputDecoration(
-                labelText: "Amount",
-                labelStyle: TextStyle(color: Colors.purple, fontSize: 16),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.purple, width: 1.3),
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 5),
-              // height: 70,
-              child: Row(
-                children: [
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Text(
-                      (_selectedDate == null)
-                          ? "No date chosen!"
-                          : "Picked Date: ${DateFormat.yMMMd().format(_selectedDate!)}\nPicked Time: ${DateFormat.jm().format(_selectedDate!)}",
+    return SingleChildScrollView(
+      child: Card(
+        color: Color(0xFFEFD6F3),
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 15,
+            left: 15,
+            right: 15,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 15
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextField(
+                controller: _titleController,
+                onEditingComplete: () {
+                  _submitData();
+                },
+                decoration: InputDecoration(
+                  labelText: "Title",
+                  labelStyle: TextStyle(color: Colors.purple, fontSize: 16),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.purple,
+                      width: 1.3,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      _pickDateTime();
-                    },
-                    child: Text(
-                      "Choose Date",
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
+                ),
+              ),
+              TextField(
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                onEditingComplete: () {
+                  _submitData();
+                },
+                decoration: InputDecoration(
+                  labelText: "Amount",
+                  labelStyle: TextStyle(color: Colors.purple, fontSize: 16),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 1.3),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 5),
+                // height: 70,
+                child: Row(
+                  children: [
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Text(
+                        (_selectedDate == null)
+                            ? "No date chosen!"
+                            : "Picked Date: ${DateFormat.yMMMd().format(_selectedDate!)}\nPicked Time: ${DateFormat.jm().format(_selectedDate!)}",
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                // backgroundColor: Color(0xffe8e1ea),
-                backgroundColor: Colors.purple,
-              ),
-              onPressed: _submitData,
-              child: Text(
-                "Add Transaction",
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                      color: Colors.white,
+                    TextButton(
+                      onPressed: () {
+                        _pickDateTime();
+                      },
+                      child: Text(
+                        "Choose Date",
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  // backgroundColor: Color(0xffe8e1ea),
+                  backgroundColor: Colors.purple,
+                ),
+                onPressed: _submitData,
+                child: Text(
+                  "Add Transaction",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
