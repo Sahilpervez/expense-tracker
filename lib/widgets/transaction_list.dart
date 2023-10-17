@@ -68,11 +68,9 @@ class TransactionList extends StatelessWidget {
                     ),
                     title: Text(
                       "${userTranx[idx].title}",
-                      style: Theme.of(context)
-                          .appBarTheme
-                          .textTheme
-                          ?.titleMedium
-                          ?.copyWith(fontSize: 18),
+                      style: TextStyle(fontFamily: 'OpenSans',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,),
                     ),
                     subtitle: Text(
                       "${DateFormat.yMMMd().format(userTranx[idx].date)} - ${DateFormat.jm().format(userTranx[idx].date)}",

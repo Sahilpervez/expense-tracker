@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.purple,
-        accentColor: Colors.amber,
+        hintColor: Colors.amber,
         // accentColor: Colors.amber,
         // highlightColor: Colors.amber,
         // focusColor: Colors.amber,
@@ -48,13 +48,13 @@ class MyApp extends StatelessWidget {
           //     fontWeight: FontWeight.w500,
           //   ),
           // ),
-          textTheme: ThemeData.light().textTheme.copyWith(
-                titleMedium: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold,
-                ),
-              ), // textTheme
+          // textTheme: ThemeData.light().textTheme.copyWith(
+          //       titleMedium: TextStyle(
+          //         fontFamily: 'Montserrat',
+          //         fontSize: 19,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ), // textTheme
         ),
       ),
       debugShowCheckedModeBanner: false,
